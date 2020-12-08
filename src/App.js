@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import Header from './components/Header';
+import Educators from './components/Educators'
+import { v4 as uuid } from "uuid"
 import './App.css';
 
 function App() {
+
+  const parentHandler = (word) => {
+    console.log("in the parent" + word);
+  };
+
+  const teachers = [
+    { id: uuid(), name: "Jon", level: "Lead" },
+    { id: uuid(), name: "Lauren", level: "awesome" },
+    { id: uuid(), name: "Ashley", level: "TA" },
+    { id: uuid(), name: "Nolan", level: "Super" }
+  ];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header cohort="Snowhort" studentAverage={82} favoriteGame="Myst Exile" />
+      <Educators teachers={teachers} parentHandler={parentHandler} />
     </div>
   );
 }
